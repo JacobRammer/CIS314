@@ -1,17 +1,13 @@
 #include <stdio.h>
 
-void inplace_swap(int *x, int *y)
+void inplace_swap()
 {
-    *y=*x^*y; /*Step1*/
-    *x=*x^*y; /*Step2*/
-    *y=*x^*y; /*Step3*/
-
-    printf("Y = %d, x = %d, y = %d", &[y, x, y);
+    printf("hello");
 }
 
 int main()
 {
-    inplace_swap(10, 11);
+    inplace_swap();
     return 0;
 }
 
