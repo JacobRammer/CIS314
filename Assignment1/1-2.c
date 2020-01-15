@@ -8,7 +8,7 @@ unsigned int replace(unsigned int x, int i, unsigned char b)
 {
     i = (i << 3); // shift by the specified offset
     unsigned int ffMask = (0xFF << i); // create the mask
-    unsigned int newVal = (b << i); // mast the bits that we want to replace to the correct place
+    unsigned int newVal = (b << i); // mask the bits that we want to replace to the correct place
     return (x & ~ffMask) | newVal;
     /*
      * X is the original word, not it with the ffmask which is now flipped and then or it
