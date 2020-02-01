@@ -1,3 +1,7 @@
+/*
+ * Jacob Rammer
+ * Assignment 3-1
+ */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -35,9 +39,9 @@ void readIntArray(IntArray *array)
         if(strtol(userNum, &num, 10) == 0)  // error checking
         {
             printf("Invalid input\n");
-            readIntArray(array);
-        }
-        array->dataPtr[i] = test;
+            i--;
+        } else  // only assign data if input is valid
+            array->dataPtr[i] = test;
     }
 
 }
@@ -84,9 +88,9 @@ int main()
         main();
     }
     IntArray *newArray = mallocIntArray(length);
-    readIntArray(newArray);
+    readIntArray(newArray);  // todo breaks on 0
     sortIntArray(newArray);
     printIntArray(newArray);
-    freeIntArray(newArray);
+    freeIntArray(newArray);  // valgrind is happy
     return 0;
 }
