@@ -12,7 +12,8 @@ typedef struct
 IntArray* mallocIntArray(int length)
 {
     IntArray *ia = malloc(sizeof(IntArray));  // allocate memory for the IntArray struct
-    ia->dataPtr = malloc(sizeof(long) * length);  // allocate memory for the pointer array
+    ia->dataPtr = malloc(sizeof(int) * length);  // allocate memory for the pointer array
+    ia->length = length;
     return ia;
 }
 
@@ -24,19 +25,68 @@ void freeIntArray(IntArray *arrayPtr)  // just frees the memory for the struct a
 
 void readIntArray(IntArray *array)
 {
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < array->length; i++)
     {
-        char userNum[1];
+        char userNum[1];  // char is 1 byte, ran with valgrind, no errors
         char *num;
-        printf("Enter length:");
+        printf("Enter int:");
         fgets(userNum, 10, stdin);
         int test = strtol(userNum, &num, 10);
-        printf("%d\n", test);
+        if(strtol(userNum, &num, 10) == 0)  // error checking
+        {
+            printf("Invalid input\n");
+            readIntArray(array);
+        }
+        array->dataPtr[i] = test;
+    }
+
+}
+
+void swap(int *xp, int *yp)
+{
+    int tempX = *yp;  // create a temp y copy since i'm reassigning yp right away
+    *yp = *xp;
+    *xp = tempX;
+}
+
+void sortIntArray(IntArray *array)
+{
+    // bubble sort inspired by https://www.geeksforgeeks.org/bubble-sort/
+
+    for(int i = 0; i < (array->length) - 1; i++)
+    {
+        for(int j = 0; j < (array->length) - i - 1; j++)
+        {
+            if(array->dataPtr[j] > array->dataPtr[j + 1])
+                swap(&array->dataPtr[j], &array->dataPtr[j + 1]);
+        }
+    }
+}
+
+void printIntArray(IntArray *array)
+{
+    for(int i = 0; i < array->length; i++)
+    {
+        printf("i = %d, %d\n", i, array->dataPtr[i]);
     }
 }
 
 int main()
 {
-    readIntArray(5);
+    char userNum[1];  // char is 1 byte, ran with valgrind, no errors
+    char *num;
+    printf("Enter length:");
+    fgets(userNum, 10, stdin);
+    int length = strtol(userNum, &num, 10);
+    if(length <= 0 || strtol(userNum, &num, 10) == 0)
+    {
+        printf("Invalid input\n");
+        main();
+    }
+    IntArray *newArray = mallocIntArray(length);
+    readIntArray(newArray);
+    sortIntArray(newArray);
+    printIntArray(newArray);
+    freeIntArray(newArray);
     return 0;
 }
