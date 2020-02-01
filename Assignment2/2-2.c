@@ -23,6 +23,6 @@ unsigned int extract(unsigned int x, int i)
 
 int main()
 {
-    printf("%#010x\n", extract(0x8F000000, 3));
+    printf("%#010x\n", extract(0xABCDEF00, 2));
     return 0;
 }

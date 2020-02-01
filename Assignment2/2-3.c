@@ -23,15 +23,15 @@ int ge(float x, float y) {
 
 int main()
 {
-    printf("bool: %d\n", ge(0.0f, 0.0f));
-    printf("bool: %d\n", ge(-0.0f, 0.0f));
-    printf("bool: %d\n", ge(-1.0f, -1.0f));
-    printf("bool: %d\n", ge(1.0f, 1.0f));
-    printf("bool: %d\n", ge(-1.0f, 0.0f));
-    printf("bool: %d\n", ge(0.0f, 1.0f));
-    printf("bool: %d\n", ge(1.0f, 0.0f));
-    printf("bool: %d\n", ge(0.0f, -1.0f));
-    printf("bool: %d\n", ge(-1.0f, -2.0f));
+    printf("%d\n", ge(0.0f, 0.0f));
+    printf("%d\n", ge(-0.0f, 0.0f));
+    printf("%d\n", ge(-1.0f, -1.0f));
+    printf("%d\n", ge(1.0f, 1.0f));
+    printf("%d\n", ge(-1.0f, 0.0f));
+    printf("%d\n", ge(0.0f, 1.0f));
+    printf("%d\n", ge(1.0f, 0.0f));
+    printf("%d\n", ge(0.0f, -1.0f));
+    printf("%d\n", ge(-1.0f, -2.0f));
 //    printf("bool: %d\n", ge(-1.0f, 2.0f));
 
 //    ge(0.0f, 0.0f): 1
