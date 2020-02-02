@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 
-int f(int a, int b, int c)
+long f(long a, long b, long c)
 {
     /*
      * c = rdx
