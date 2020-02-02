@@ -15,7 +15,11 @@ typedef struct
 
 IntArray* mallocIntArray(int length)
 {
-    IntArray *ia = malloc(sizeof(IntArray));  // allocate memory for the IntArray struct
+    /*
+     * Function to initialize and return an IntArray
+     */
+
+    IntArray *ia = malloc(sizeof(IntArray));  // allocate memory for the IntArray object
     ia->dataPtr = malloc(sizeof(int) * length);  // allocate memory for the pointer array
     ia->length = length;
     return ia;
@@ -23,12 +27,21 @@ IntArray* mallocIntArray(int length)
 
 void freeIntArray(IntArray *arrayPtr)  // just frees the memory for the struct and dataPtrs
 {
+    /*
+     * Free memory allocated by creating an int array object
+     */
+
     free(arrayPtr->dataPtr);
     free(arrayPtr);
 }
 
 void readIntArray(IntArray *array)
 {
+    /*
+     * Add items to the intArray dataPtr array from user input.
+     * Only accepts number greater than 0
+     */
+
     for(int i = 0; i < array->length; i++)
     {
         char userNum[1];  // char is 1 byte, ran with valgrind, no errors
@@ -48,6 +61,10 @@ void readIntArray(IntArray *array)
 
 void swap(int *xp, int *yp)
 {
+    /*
+     * Swap items based on index location in the dataPtr array
+     */
+
     int tempX = *yp;  // create a temp y copy since i'm reassigning yp right away
     *yp = *xp;
     *xp = tempX;
@@ -55,7 +72,10 @@ void swap(int *xp, int *yp)
 
 void sortIntArray(IntArray *array)
 {
-    // bubble sort inspired by https://www.geeksforgeeks.org/bubble-sort/
+    /*
+     * Sort the dataPtr array from least to greatest.
+     * Based on bubble sort from: bubble sort inspired by https://www.geeksforgeeks.org/bubble-sort/
+     */
 
     for(int i = 0; i < (array->length) - 1; i++)
     {
@@ -69,6 +89,10 @@ void sortIntArray(IntArray *array)
 
 void printIntArray(IntArray *array)
 {
+    /*
+     * Print everything in the dataPtr array
+     */
+
     for(int i = 0; i < array->length; i++)
     {
         printf("i = %d, %d\n", i, array->dataPtr[i]);
@@ -84,11 +108,15 @@ int main()
     int length = strtol(userNum, &num, 10);
     if(length <= 0 || strtol(userNum, &num, 10) == 0)
     {
+        /*
+         * From strtol documentation: strtol will return 0 if there
+         * is an error parsing non digit input
+         */
         printf("Invalid input\n");
         main();
     }
     IntArray *newArray = mallocIntArray(length);
-    readIntArray(newArray);  // todo breaks on 0
+    readIntArray(newArray);
     sortIntArray(newArray);
     printIntArray(newArray);
     freeIntArray(newArray);  // valgrind is happy
