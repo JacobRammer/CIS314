@@ -44,7 +44,7 @@ void readIntArray(IntArray *array)
 
     for(int i = 0; i < array->length; i++)
     {
-        char userNum[15];  // char is 1 byte, ran with valgrind, no errors.
+        char userNum[sizeof(int) * array->length];  // char is 1 byte, ran with valgrind, no errors.
         // Turns out giving that 1 byte is dangerous, only took me a few to figure out memory issues lol
         char *num;
         printf("Enter int:");
@@ -55,7 +55,10 @@ void readIntArray(IntArray *array)
             printf("Invalid input\n");
             i--;
         } else  // only assign data if input is valid
+        {
             array->dataPtr[i] = test;
+        }
+
     }
 
 }
