@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 
-int f(int a, int b, int c)
+int f(unsigned int a, unsigned int b, unsigned int c)
 {
     /*
      * c = rdx
