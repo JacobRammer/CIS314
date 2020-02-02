@@ -56,7 +56,6 @@ void readIntArray(IntArray *array)
                 printf("Invalid input\n");
             } else  // only assign data if input is valid
             {
-                printf("test: %ld\n", test);
                 array->dataPtr[i] = test;
                 break;
             }
@@ -102,7 +101,7 @@ void printIntArray(IntArray *array)
 
     for(int i = 0; i < array->length; i++)
     {
-        printf("i = %d, %d\n", i, array->dataPtr[i]);
+        printf("%d\n", array->dataPtr[i]);
     }
 }
 
@@ -123,7 +122,6 @@ int main()
         main();
     }
     IntArray *newArray = mallocIntArray(length);
-    printf("length is %d\n", length);
     readIntArray(newArray);
     sortIntArray(newArray);
     printIntArray(newArray);
