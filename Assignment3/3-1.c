@@ -20,7 +20,7 @@ IntArray* mallocIntArray(int length)
      */
 
     IntArray *ia = malloc(sizeof(IntArray));  // allocate memory for the IntArray object
-    ia->dataPtr = malloc(sizeof(int) * length);  // allocate memory for the pointer array
+    ia->dataPtr = malloc(sizeof(long) * length);  // allocate memory for the pointer array
     ia->length = length;
     return ia;
 }
@@ -50,12 +50,13 @@ void readIntArray(IntArray *array)
         {
             printf("Enter int:");
             fgets(userNum, 20, stdin);
-            int test = (int)strtol(userNum, &num, 10);
+            int test = strtol(userNum, &num, 10);
             if (test == '\0')  // error checking
             {
                 printf("Invalid input\n");
             } else  // only assign data if input is valid
             {
+                printf("test: %d\n", test);
                 array->dataPtr[i] = test;
                 break;
             }
