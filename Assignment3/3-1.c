@@ -42,22 +42,24 @@ void readIntArray(IntArray *array)
      * Only accepts number greater than 0
      */
 
-    for(int i = 0; i < array->length; i++)
-    {
+    for(int i = 0; i < array->length; i++) {
         printf("I is: %d\n", i);
         char userNum[sizeof(int) * 100];  // char is 1 byte, ran with valgrind, no errors.
         // Turns out giving that 1 byte is dangerous, only took me a few to figure out memory issues lol
         char *num;
-        printf("Enter int:");
-        fgets(userNum, 10, stdin);
-        int test = strtol(userNum, &num, 10);
-        if(test == '\0')  // error checking
+        while (1)
         {
-            printf("Invalid input\n");
-            i--;
-        } else  // only assign data if input is valid
-        {
-            array->dataPtr[i] = test;
+            printf("Enter int:");
+            fgets(userNum, 10, stdin);
+            int test = strtol(userNum, &num, 10);
+            if (test == '\0')  // error checking
+            {
+                printf("Invalid input\n");
+            } else  // only assign data if input is valid
+            {
+                array->dataPtr[i] = test;
+                break;
+            }
         }
 
     }
