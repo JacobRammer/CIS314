@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 
-long f(long a, long b, long c)
+long f(long long a, long long b, long long c)
 {
     /*
      * c = rdx
@@ -22,6 +22,6 @@ long f(long a, long b, long c)
 
 int main()
 {
-    printf("%d\n", f(1, 2, 4));
-    printf("%d\n", f(3, 5, 7));
+    printf("%ld\n", f(1, 2, 4));
+    printf("%ld\n", f(3, 5, 7));
 }
