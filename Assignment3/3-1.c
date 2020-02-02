@@ -72,6 +72,7 @@ void swap(int *xp, int *yp)
     int tempX = *yp;  // create a temp y copy since i'm reassigning yp right away
     *yp = *xp;
     *xp = tempX;
+    printf("help me\n");
 }
 
 void sortIntArray(IntArray *array)
