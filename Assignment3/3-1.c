@@ -113,15 +113,15 @@ int main()
     printf("Enter length:");
     fgets(userNum, 10, stdin);
     int length = strtol(userNum, &num, 10);
-    if(length <= 0 || strtol(userNum, &num, 10) == 0)
-    {
-        /*
-         * From strtol documentation: strtol will return 0 if there
-         * is an error parsing non digit input
-         */
-        printf("Invalid input\n");
-        main();
-    }
+//    if(length <= 0 || strtol(userNum, &num, 10) == 0)
+//    {
+//        /*
+//         * From strtol documentation: strtol will return 0 if there
+//         * is an error parsing non digit input
+//         */
+//        printf("Invalid input\n");
+//        main();
+//    }
     IntArray *newArray = mallocIntArray(length);
     readIntArray(newArray);
     sortIntArray(newArray);
