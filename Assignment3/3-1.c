@@ -121,8 +121,8 @@ int main()
     }
     IntArray *newArray = mallocIntArray(length);
     readIntArray(newArray);
-    sortIntArray(newArray);
+//    sortIntArray(newArray);
 //    printIntArray(newArray);
-    freeIntArray(newArray);  // valgrind is happy
+//    freeIntArray(newArray);  // valgrind is happy
     return 0;
 }
