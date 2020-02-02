@@ -122,7 +122,7 @@ int main()
     IntArray *newArray = mallocIntArray(length);
     readIntArray(newArray);
     sortIntArray(newArray);
-    printIntArray(newArray);
-//    freeIntArray(newArray);  // valgrind is happy
+//    printIntArray(newArray);
+    freeIntArray(newArray);  // valgrind is happy
     return 0;
 }
