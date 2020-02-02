@@ -51,7 +51,7 @@ void readIntArray(IntArray *array)
             printf("Enter int:");
             fgets(userNum,sizeof(int) * array->length, stdin);
             long test = strtol(userNum, &num, 10);
-            if (test == '\0')  // error checking
+            if (strtol(userNum, &num, 10) == 0)  // error checking
             {
                 printf("Invalid input\n");
             } else  // only assign data if input is valid
