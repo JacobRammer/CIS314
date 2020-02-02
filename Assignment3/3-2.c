@@ -14,8 +14,8 @@ long f(long a, long b, long c)
      */
     c = c + b;  // addq %rsi, %rd (addition)
     a = a * c;  // imulq % rdx, %rdi (multiplication)
-    c = c << 31;  // salq $63, %rdx
-    c = c >> 31; // sarq $63, %rdx
+    c = c << 63;  // salq $63, %rdx
+    c = c >> 63; // sarq $63, %rdx
     return a ^ c;  // xorq %rdx, %rax
 }
 
