@@ -123,7 +123,13 @@ int main()
 //        main();
 //    }
     IntArray *newArray = mallocIntArray(length);
-    readIntArray(newArray);
+    printf("length is %d\n", length);
+//    readIntArray(newArray);
+    newArray->dataPtr[0] = 5;
+    newArray->dataPtr[1] = 4;
+    newArray->dataPtr[2] = 3;
+    newArray->dataPtr[3] = 2;
+    newArray->dataPtr[4] = 1;
     sortIntArray(newArray);
     printIntArray(newArray);
     freeIntArray(newArray);  // valgrind is happy
