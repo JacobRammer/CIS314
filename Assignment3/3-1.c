@@ -43,13 +43,13 @@ void readIntArray(IntArray *array)
      */
 
     for(int i = 0; i < array->length; i++) {
-        char userNum[500];  // char is 1 byte, ran with valgrind, no errors.
+        char userNum[sizeof(int) * array->length];  // char is 1 byte, ran with valgrind, no errors.
         // Turns out giving that 1 byte is dangerous, only took me a few to figure out memory issues lol
         char *num;
         while (1)
         {
             printf("Enter int:");
-            fgets(userNum,500, stdin);
+            fgets(userNum,sizeof(int) * array->length, stdin);
             long test = strtol(userNum, &num, 10);
             if (test == '\0')  // error checking
             {
@@ -108,28 +108,23 @@ void printIntArray(IntArray *array)
 
 int main()
 {
-    char userNum[1];  // char is 1 byte, ran with valgrind, no errors
+    char userNum[4];  // note to self: dont ever use 1 for the size again
     char *num;
     printf("Enter length:");
     fgets(userNum, 10, stdin);
     int length = strtol(userNum, &num, 10);
-//    if(length <= 0 || strtol(userNum, &num, 10) == 0)
-//    {
-//        /*
-//         * From strtol documentation: strtol will return 0 if there
-//         * is an error parsing non digit input
-//         */
-//        printf("Invalid input\n");
-//        main();
-//    }
+    if(length <= 0 || strtol(userNum, &num, 10) == 0)
+    {
+        /*
+         * From strtol documentation: strtol will return 0 if there
+         * is an error parsing non digit input
+         */
+        printf("Invalid input\n");
+        main();
+    }
     IntArray *newArray = mallocIntArray(length);
     printf("length is %d\n", length);
-//    readIntArray(newArray);
-    newArray->dataPtr[0] = 5;
-    newArray->dataPtr[1] = 4;
-    newArray->dataPtr[2] = 3;
-    newArray->dataPtr[3] = 2;
-    newArray->dataPtr[4] = 1;
+    readIntArray(newArray);
     sortIntArray(newArray);
     printIntArray(newArray);
     freeIntArray(newArray);  // valgrind is happy
