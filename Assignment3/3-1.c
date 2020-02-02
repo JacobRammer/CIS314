@@ -44,13 +44,13 @@ void readIntArray(IntArray *array)
 
     for(int i = 0; i < array->length; i++) {
         printf("I is: %d\n", i);
-        char userNum[sizeof(int) * 100];  // char is 1 byte, ran with valgrind, no errors.
+        char userNum[sizeof(int) * array->length];  // char is 1 byte, ran with valgrind, no errors.
         // Turns out giving that 1 byte is dangerous, only took me a few to figure out memory issues lol
         char *num;
         while (1)
         {
             printf("Enter int:");
-            fgets(userNum, 10, stdin);
+            fgets(userNum, sizeof(int) * array->length, stdin);
             int test = strtol(userNum, &num, 10);
             if (test == '\0')  // error checking
             {
