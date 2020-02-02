@@ -44,7 +44,7 @@ void readIntArray(IntArray *array)
 
     for(int i = 0; i < array->length; i++)
     {
-        char userNum[10];  // char is 1 byte, ran with valgrind, no errors.
+        char userNum[15];  // char is 1 byte, ran with valgrind, no errors.
         // Turns out giving that 1 byte is dangerous, only took me a few to figure out memory issues lol
         char *num;
         printf("Enter int:");
