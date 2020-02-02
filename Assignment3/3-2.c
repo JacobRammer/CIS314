@@ -7,7 +7,7 @@
 
 int f(int a, int b, int c)
 {
-    int temp = c + b;
+    c = c + b;
     return 0;
 }
 
