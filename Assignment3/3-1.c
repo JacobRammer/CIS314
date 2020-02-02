@@ -20,7 +20,7 @@ IntArray* mallocIntArray(int length)
      */
 
     IntArray *ia = malloc(sizeof(IntArray));  // allocate memory for the IntArray object
-    ia->dataPtr = malloc(sizeof(long) * length);  // allocate memory for the pointer array
+    ia->dataPtr = malloc(sizeof(int) * length);  // allocate memory for the pointer array
     ia->length = length;
     return ia;
 }
@@ -43,20 +43,20 @@ void readIntArray(IntArray *array)
      */
 
     for(int i = 0; i < array->length; i++) {
-        char userNum[20];  // char is 1 byte, ran with valgrind, no errors.
+        char userNum[500];  // char is 1 byte, ran with valgrind, no errors.
         // Turns out giving that 1 byte is dangerous, only took me a few to figure out memory issues lol
         char *num;
         while (1)
         {
             printf("Enter int:");
-            fgets(userNum, 20, stdin);
-            int test = strtol(userNum, &num, 10);
+            fgets(userNum,500, stdin);
+            long test = strtol(userNum, &num, 10);
             if (test == '\0')  // error checking
             {
                 printf("Invalid input\n");
             } else  // only assign data if input is valid
             {
-                printf("test: %d\n", test);
+                printf("test: %ld\n", test);
                 array->dataPtr[i] = test;
                 break;
             }
