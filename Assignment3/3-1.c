@@ -44,6 +44,7 @@ void readIntArray(IntArray *array)
 
     for(int i = 0; i < array->length; i++)
     {
+        printf("I is: %d\n", i);
         char userNum[sizeof(int) * array->length];  // char is 1 byte, ran with valgrind, no errors.
         // Turns out giving that 1 byte is dangerous, only took me a few to figure out memory issues lol
         char *num;
@@ -121,8 +122,8 @@ int main()
     }
     IntArray *newArray = mallocIntArray(length);
     readIntArray(newArray);
-//    sortIntArray(newArray);
-//    printIntArray(newArray);
-//    freeIntArray(newArray);  // valgrind is happy
+    sortIntArray(newArray);
+    printIntArray(newArray);
+    freeIntArray(newArray);  // valgrind is happy
     return 0;
 }
