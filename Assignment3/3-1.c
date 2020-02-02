@@ -51,7 +51,7 @@ void readIntArray(IntArray *array)
         printf("Enter int:");
         fgets(userNum, 10, stdin);
         int test = strtol(userNum, &num, 10);
-        if(strtol(userNum, &num, 10) == 0)  // error checking
+        if(test == '\0')  // error checking
         {
             printf("Invalid input\n");
             i--;
