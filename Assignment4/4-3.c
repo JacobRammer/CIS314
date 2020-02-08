@@ -9,7 +9,7 @@ long fact(long x)  // x is a callee-saved variable, which will be stored in %rbx
 {
     if(x <= 1)
         return 1;
-//    long px = x;
+    long px = x;
     long fx = fact(x - 1);
     /*      ^^
      * Since this is a recursive call, a temporary register will be used, which is %rbx
