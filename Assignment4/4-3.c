@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 
-long fact(long x)  // x is a callee-saved variable, which will be stored in %rbx
+long fact(long x)  // x is a callee-saved variable, which will be stored (moved) to %rbx
 {
     if(x <= 1)
         return 1;
