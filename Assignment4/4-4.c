@@ -24,6 +24,7 @@ void optimizedTranspose(array_t a)  // this mainly follows the slides from class
     /*
     * A[i][j] is element of type T, which requires K bytes
     * Address  A + i * (C * K) +  j * K 
+    * Actually after a few slides it gives the outline for the algorith below
     */
 
 
@@ -37,8 +38,8 @@ void optimizedTranspose(array_t a)  // this mainly follows the slides from class
             long temp2 = *col;
             *row = temp2;  // will swap column with row
             *col = temp1;  // swap row with column
-            row++;
             col += N;
+            row++;
             /*
             * Add 1 to row (which will be 1 * 8) to the location of row
             *  Increment column by 4 (4 * 8) to get to the next list
@@ -71,12 +72,12 @@ int main()
 
 /*
 L3:
-movq (%rax), %rcx
-movq (%rdx), %rsi
-movq %rsi, (%rax)
-movq %rcx, (%rdx)
-addq $8, %rax
-addq $32, %rdx
-cmpq %r9, %rax
-jne .L3
+movq (%rax), %rcx, put array lookup in t1
+movq (%rdx), %rsi put array lookup in t2
+movq %rsi, (%rax) next 2 lines are the swap. t1 into a[j][i]
+movq %rcx, (%rdx) t2 into a[i][j]
+addq $8, %rax  add 8 to t1 for long data type
+addq $32, %rdx add 32 to t2 (since it's 4 * 8 bytes for long)
+cmpq %r9, %rax inner loop i, j compare
+jne .L3  if the loop condition is not met
 */
