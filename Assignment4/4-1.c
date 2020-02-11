@@ -22,7 +22,7 @@ long loop(long x, long y)
         /*
          * mask - %rax is moved to the %r8 register.
          * which is then &'d with %rdi which is x which
-         * is then ^'d with result
+         * is then ^'d with result.\a
          * this corresponds with:
          * andq %rdi, %r8
          * xorq %r8, %rdx

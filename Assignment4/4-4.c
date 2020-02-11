@@ -61,6 +61,7 @@ void testPrint(array_t a)
             printf("%ld ", a[i][j]);
         printf("}, ");
     }
+    printf("\n");
 }
 int main()
 {
