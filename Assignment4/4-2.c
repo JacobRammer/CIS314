@@ -42,10 +42,10 @@ long sum(long n)
      */
     __asm__(
             ".LABEL:"
-            "addl %rdi, %rcx;" // add result and i
-            "addl $1 %rcx;"
-            "cmpl %rcx %rdi;"
-            "jle .LABEL"
+            "addl %rcx, %rax;" // add i to result which is return value
+            "addl $1, %rcx;"  // increment i by 1
+            "cmpl %rcx, %rdi;"  // compare them for the if statement
+            "jle .LABEL"  // if i is not <= n, jump
     );
     // Ensure that *result* is in %rax for return - do not modify.
     __asm__ ("movq %%rax, %0 #result in rax;" : "=r" ( result ));
