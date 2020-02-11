@@ -42,9 +42,9 @@ long sum(long n)
      */
     __asm__(
             ".LABEL:"
-            "addl %rcx, %rax;" // add i to result which is return value
-            "addl $1, %rcx;"  // increment i by 1
-            "cmpl %rcx, %rdi;"  // compare them for the if statement
+            "addq %rcx, %rax;" // add i to result which is return value
+            "addq $1, %rcx;"  // increment i by 1
+            "cmpq %rcx, %rdi;"  // compare them for the if statement
             "jle .LABEL"  // if i is not <= n, jump
     );
     // Ensure that *result* is in %rax for return - do not modify.
