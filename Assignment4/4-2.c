@@ -44,7 +44,7 @@ long sum(long n)
             ".LABEL:"
             "addq %rcx, %rax;" // add i to result which is return value
             "addq $1, %rcx;"  // increment i by 1
-            "cmpq %rcx, %rdi;"  // compare them for the if statement
+            "cmpq %rdi, %rcx;"  // compare them for the if statement
             "jle .LABEL"  // if i is not <= n, jump
     );
     // Ensure that *result* is in %rax for return - do not modify.
