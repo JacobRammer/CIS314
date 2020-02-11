@@ -56,5 +56,8 @@ long sum(long n)
 int main()
 {
     printf("Test %ld\n", sum(1));
+    printf("Test %ld\n", sum(3));
+    printf("Test %ld\n", sum(5));
+    printf("Test %ld\n", sum(7));
     return 0;
 }
