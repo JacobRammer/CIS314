@@ -10,7 +10,8 @@ unsigned int extract(unsigned int x, int i)
     /* from lab 1
      * 0xff << (3 << 3) = 3 * 8 = 24
      */
-    unsigned int leftOffset =  24 - (i << 3);  //from lab 1: i << 3 => i * 3
+    unsigned int leftOffset =  24 - (i << 3);  //from lab 1: i << 3 => 2^3
+    printf("offset is %#010x\n", leftOffset);
     int newWord = x << leftOffset; // shift the bits to position indicated above
     return (unsigned int) (newWord >> 24);
     /*              ^^^^^^
