@@ -5,15 +5,33 @@ int f(int a, int b, int c, int d, int n)
     int ab = a * b;
     int cd = c * d;
     int i = 1;
-    int icd = i * c * d; // set i to 1 so it doesn't * by 0 on first iteration
-    int result = 0;
-     for (i = 0; i < n; ++i)
-     {
-        for (int j = 0; j < n; ++j)
-        {
-        result += ab + icd + cd + j;
-        }
-     }
+    int icd = i * c * d;
+    int result = (n * n) * a * b + n * (n * (n - 1))
+            / 2 * c * d + (n * (n - 1)) * n / 2;
+
+     /*
+      * Piazza led me down the road to figure out the formula post @ 119
+      * so breaking the loop down, we have n*n, a* b, n - 1 for length
+      *
+      * 2 n
+      *
+      * loop 1:
+      * (n * n) * a * b + n * (n * (n - 1))/ 2
+      * loop2:
+      * loop1 *= * c * d + (n * (n - 1)) * n / 2
+      */
+
+//     this actually doesn't work
+//     for (i = 1; i < n; ++i)
+//     {
+//        for (int j = 0; j < n + 1; ++j)
+//        {
+//        result += ab + icd + cd + j;
+//
+//        }
+//     }
+
+
      return result;
 }
 
