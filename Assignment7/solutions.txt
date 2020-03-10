@@ -1,0 +1,13 @@
+In total there are 1024 iterations in the loop (32^2).
+In total, there are 4096 operations within the loop
+
+a)
+I know the miss rate will be worse than b because we're iterating through columns.
+Since we're iterating through the columns, it will be a miss every time
+
+
+b)
+So, I believe on the first iteration, it will be a cold miss (obviously), and we're
+iterating through the rows, and we can fit 2 colorpoints in the cache (cache = 62b, struct = 32b)
+so 32 * 16 = 512,  512/4096 = 12.5%
+

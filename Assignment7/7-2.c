@@ -102,7 +102,13 @@ int main()
      * As expected, g is faster. This is because we are iterating
      * the rows, and not the columns like in f. This makes a difference
      * because of the way memory is laid out (in a row), thus there
-     * are less missed in g than in f.
+     * are less misses in g than in f.
+     *
+     * Time to call f(a): 0.035000 seconds.
+        Long f: -23228672
+
+        Time to call g(a): 0.016000 seconds.
+        Long g: -23228672
      */
 
     free(points);
