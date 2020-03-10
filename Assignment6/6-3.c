@@ -112,7 +112,7 @@ int main()
      * provides little optimization, but I'm sure gcc is smart enough to
      * know anything multiplied by 1.0f is itself, so the executable is
      * optimised not to skip the loop multiplying a[i] by 1. So leading
-     * the execution times to essentially be the same
+     * the execution times to essentially be the same / function g is faster
      *
      * When using the -Og flag and diving into the assembly code (in MacOS):
      * without -Og:
