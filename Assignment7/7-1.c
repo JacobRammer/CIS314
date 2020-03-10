@@ -42,5 +42,9 @@ int main()
     printf("Set: %x\n", getSet(0x87654321));
     printf("Offset: %x\n", getOffset(0x87654321));
 
+    printf("\nTag: %x\n", getTag(0x54321987));
+    printf("Set: %x\n", getSet(0x54321987));
+    printf("Offset: %x\n", getOffset(0x54321987));
+
     return 0;
 }
