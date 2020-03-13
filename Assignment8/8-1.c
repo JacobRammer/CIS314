@@ -40,13 +40,11 @@ unsigned int getTag(unsigned int address)
 
 Cache* mallocCache(int numLines)
 {
-    // TODO - malloc a pointer to a struct Cache, malloc a pointer to an array
-    // of struct Line instances (array length is numLines). Also initialize
-    // valid to 0 for each struct Line. Return the struct Cache pointer.
 
-    Cache* cache = (Cache*)malloc(16* sizeof(Cache));
+
+    Cache* cache = (Cache*)malloc(16* sizeof(Cache));  // allocate for the cache struct
     cache->numLines = numLines;
-    cache->lines = (Line*)malloc(sizeof(int) * numLines);
+    cache->lines = (Line*)malloc(sizeof(int) * numLines);  // allocate for the line struct
     return cache;
 
 }
@@ -66,10 +64,10 @@ void printCache(Cache* cache)
         Line* line = &cache->lines[i];
         if (line->valid)
         {
-            unsigned char* data = line->data;
+            unsigned char* tempCahce = line->data;
             //set: 0 - tag: 1 - valid: 1 - data: dd cc 00 00
-            printf("Set: %x - tag: %x - valid %u data: %.2x %.2x %.2x %.2x\n", i, line->tag, line->valid, data[0],
-                    data[1], data[2], data[3]);
+            printf("Set: %x - tag: %x - valid %u data: %.2x %.2x %.2x %.2x\n", i, line->tag, line->valid, tempCahce[0],
+                   tempCahce[1], tempCahce[2], tempCahce[3]);
         }
     }
 }
@@ -94,11 +92,12 @@ void readValue(Cache* cache, unsigned int address)
         // found set: 0 - tag: 1 - offset: 0 - valid: 1 - data: dd
         printf("found set: %x - tag: %x - offset: %x - valid: %u - data: %.2x\n",
 				set, newLine->tag, offset, newLine->valid, data[offset]);
-        if (newLine->tag == tag)
+        if (newLine->tag == tag)  // check the tag to see if they're equal, which is a cache hit
+        {
             printf("Hit!\n");
-        else {
+        } else // if the the newline is valid but the tags do not match, it's a miss
             printf("tags don't match - miss!\n");
-        }
+
     } else
         printf("no valid line found - miss!\n");
 }
